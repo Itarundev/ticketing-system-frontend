@@ -7,16 +7,15 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const User = JSON.parse(localStorage.getItem("user"));
-      if(User)
-      {
-        navigate("/dashboard")
-      }
-      else{
-        navigate("/");
-      }
+    if (User) {
+      navigate("/dashboard")
+    }
+    else {
+      navigate("/");
+    }
   }, []);
 
   const handleSubmit = (event) => {
@@ -42,11 +41,11 @@ export default function Login() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.company));
         navigate("/dashboard")
-       
+
       })
       .catch((error) => console.log(error));
   };
-  
+
   return (
     <div className="login-container">
       <h2>Login</h2>

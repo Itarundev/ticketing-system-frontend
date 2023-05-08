@@ -1,0 +1,31 @@
+.appBar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 2rem;
+}
+.appBar_right{
+    display: flex;
+    align-items: center;
+
+}
+
+.profile_info{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+
+}
+.logoutButton{
+    background-color: white !important;
+    color: black !important;
+    outline: none !important;
+    border: 1px solid lightgray !important;
+    border-radius: 0.5rem !important; 
+    text-transform: capitalize !important;
+    padding: 0.5rem 1rem !important;
+}
+.logout_btn button:hover{
+    color: white !important;
+    background-color:var(--secondary) !important;
+}

@@ -1,0 +1,44 @@
+.sideBar {
+    background-color: var(--secondary);
+    color: white;
+    height: 100vh;
+    border-right: 1px solid lightgray;
+    position: fixed;
+    width: 240px;
+}
+
+.sidebar_heading {
+    background-color: white;
+    color: var(--primary);
+    height: 7.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar_heading h6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.5rem;
+    
+}
+
+
+.sidebar_list {
+    overflow: auto;
+    height: 100%;
+}
+
+.sidebar_item{
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+}
+.sidebar_item span{
+    margin-left: 1rem;
+}
