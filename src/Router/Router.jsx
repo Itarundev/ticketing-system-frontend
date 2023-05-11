@@ -4,34 +4,38 @@ import Login from '../Components/Login/Login'
 import NotFound from '../Components/NotFound/NotFound'
 import Dashboard from '../Components/Dashboard/Dashboard'
 import Register from '../Components/Register/Register'
+import TicketForm from '../Components/CreateTicket/CreateTicket'
+import Ticket from '../Components/ViewTicket/Ticket'
+import Company from '../Components/Company/Company'
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 
+
 export default function Router() {
   const navigate = useNavigate();
-  
+  const token = localStorage.getItem("token")
+  const user = JSON.parse(localStorage.getItem("user"))
   useEffect(() => {
-    const User = JSON.parse(localStorage.getItem("user"));
-      if(User)
+      if(!user&&!token)
       {
-        navigate("/dashboard")
-      }
-      else{
-        navigate("/");
+        navigate("/")
       }
   }, []);
   return (
     <div>
-        <Routes>
-       <Route exact path="/" element={<Login />} />
-       <Route exact path="/dashboard" element={<Dashboard />} />
-       <Route exact path="/register-company" element={<Register/>} />
-       
-         {/* <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/main" element={<Merge />} /> */}
-        {/* <Route exact path="/events" element={<Event />} /> */}
-        <Route path="*" element={<NotFound/>} />
-        </Routes>
+      <Routes>
+      <Route path="*" element={<NotFound />} />
+        <Route exact path="/" element={<Login />} />
+        {
+          user&&token&&<>
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/company-list" element={<Company />} />
+          <Route exact path="/register-company" element={<Register />} />
+          <Route exact path="/ticket-view" element={<Ticket />} />
+          <Route exact path="/ticket-create" element={<TicketForm />} />
+          </>
+        }  
+      </Routes>
     </div>
   )
 }
