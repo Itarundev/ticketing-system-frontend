@@ -1,31 +1,71 @@
 .appBar{
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 1rem 2rem;
 }
-.appBar_right{
+
+.appBar_left{
+  display: flex;
+  align-items: center;
+}
+
+
+.appBar_left {
     display: flex;
     align-items: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 1rem;
+  }
+  
+  .search_icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: grey;
+  }
+  
+  .filter_icon {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    color: grey;
+  }
+  
+  .search_input {
+    outline: none !important ;
+    font-size: 1rem !important;
+    width: 100% !important;
+    padding: 0.25rem 0.5rem !important;
+    height: 70% !important;
+  }
+  
+  .search_input::placeholder {
+    color: grey;
+  }
+  
 
+.logoutButton{
+  background-color: white !important;
+  color: black !important;
+  outline: none !important;
+  border: 1px solid lightgray !important;
+  border-radius: 0.5rem !important; 
+  text-transform: capitalize !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.logout_btn button:hover{
+  color: white !important;
+  background-color:var(--secondary) !important;
+}
+
+.appBar_right{
+  display: flex;
+  align-items: center;
 }
 
 .profile_info{
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-
-}
-.logoutButton{
-    background-color: white !important;
-    color: black !important;
-    outline: none !important;
-    border: 1px solid lightgray !important;
-    border-radius: 0.5rem !important; 
-    text-transform: capitalize !important;
-    padding: 0.5rem 1rem !important;
-}
-.logout_btn button:hover{
-    color: white !important;
-    background-color:var(--secondary) !important;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
 }

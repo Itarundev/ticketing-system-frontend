@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:8004/api/login", {
+    fetch(`${process.env.REACT_APP_BASE_URL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,9 +33,23 @@ export default function Login() {
     })
       .then((response) => {
         if (response.ok) {
-          return response.json();
+          return response.json().then((data) => {
+            // Access response message
+            const message = data.message;
+            toast.success(message);
+            setTimeout(() => {
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("user", JSON.stringify(data.company));
+              navigate("/dashboard")
+            }, 1000)
+          });
+        } else {
+          return response.json().then((data) => {
+            // Access error message
+            const message = data.message;
+            toast.error(message);
+          });
         }
-        throw new Error("Network response was not ok.");
       })
       .then((data) => {
         // Set the JWT token and header in local storage
@@ -60,6 +75,7 @@ export default function Login() {
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+      <ToastContainer/>
     </div>
   );
 }

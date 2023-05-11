@@ -5,7 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
-import { Container } from 'react-bootstrap';
+import { Container } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const TicketForm = () => {
   const [supportType, setSupportType] = useState('');
@@ -14,31 +15,48 @@ const TicketForm = () => {
   const [description, setDescription] = useState('');
   const [facingIssueOn, setFacingIssueOn] = useState('');
   const [images, setImages] = useState([]);
-  const [token, setToken] = useState('');
   const [support_types, setSupport_Types] = useState([]);
   const [supportSubType, setSupportSubType] = useState({});
   const [facingIssues, seFacingIssues] = useState([]);
-
+  const [allProjects, setAllProjects] = useState([])
+  const navigate = useNavigate();
+  const[selectedProject,setSelectedProject]=useState("")
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = localStorage.getItem("token")
 
 
   useEffect(() => {
-    setToken(localStorage.getItem("token"))
-    axios.get(`http://localhost:8004/api/subcategories`)
+
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/subcategories`)
       .then((res) => {
 
         setSupportSubType(res.data)
       })
   }, [])
+
+  const getAllProjects = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-projects`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then((res) => {
+        setAllProjects(res.data.projects)
+      })
+  }
   useEffect(() => {
-    axios.get(`http://localhost:8004/api/facing-issues`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/facing-issues`)
       .then((res) => {
         seFacingIssues(res.data.issues)
       })
-    axios.get('http://localhost:8004/api/get-category')
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-category`)
       .then((res) => {
         setSupport_Types(res.data)
       })
-
+      if(user.is_admin)
+      {
+        getAllProjects();
+      }
   }, [])
   const handleSupportTypeChange = (e) => {
     setSupportType(e.target.value);
@@ -53,40 +71,56 @@ const TicketForm = () => {
 
   const formData = new FormData();
   formData.append('support_type', supportType);
-  formData.append('support_relatedto', supportRelatedTo);
+  formData.append('support_related_to', supportRelatedTo);
   formData.append('title', title);
   formData.append('description', description);
   formData.append('facing_issue_on', facingIssueOn);
+
+  const handleChange = (event) => {
+    setSelectedProject(event.target.value)
+  };
+
   for (let i = 0; i < images.length; i++) {
     formData.append('images', images[i]);
   }
+  if (!user.is_admin) {
+    formData.append('project_name', user.project)
+  }
+  else{
+    formData.append('project_name', selectedProject)
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch("http://localhost:8004/api/new-ticket", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      },
-      body: formData,
+
+  fetch(`${process.env.REACT_APP_BASE_URL}/api/new-ticket`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+    body: formData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json().then((data) => {
+          // Access response message
+          const message = data.message;
+          toast.success(message);
+          setTimeout(()=>{
+            navigate("/")
+                      },1000)
+        });
+      } else {
+        return response.json().then((data) => {
+          // Access error message
+          const message = data.message;
+          toast.error(message);
+        });
+      }
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json().then((data) => {
-            // Access response message
-            const message = data.message;
-            toast.success(message);
-          });
-        } else {
-          return response.json().then((data) => {
-            // Access error message
-            const message = data.message;
-            toast.error(message);
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .catch((error) => {
+      console.log(error);
+    });
+   
 
   };
 
@@ -109,6 +143,18 @@ const TicketForm = () => {
         <Navbar />
         <Container>
           <form onSubmit={handleSubmit}>
+          <h2>Add New Ticket</h2>
+          <br />
+          {user.is_admin && allProjects.length > 0 && (
+              <div>
+                <select onChange={handleChange} defaultValue="">
+                  <option value="" disabled>Select a project</option>
+                  {allProjects.map((project, index) => (
+                    <option key={index} value={project}>{project}</option>
+                  ))}
+                </select>
+              </div>
+            )}
             <div>
               <label>Support Type</label>
               <div className="radio-group">
@@ -149,6 +195,9 @@ const TicketForm = () => {
               <label htmlFor="description">Description</label>
               <textarea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
             </div>
+
+
+
 
             <div>
               <label>Facing Issue On</label>

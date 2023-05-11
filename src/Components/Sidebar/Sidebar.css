@@ -42,3 +42,8 @@
 .sidebar_item span{
     margin-left: 1rem;
 }
+.sidebar_item.active {
+    background-color: var(--primary);
+    color: white;
+  }
+  

@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-import { Container } from 'react-bootstrap';
+import { Container } from '@mui/material';
 
 export default function Register() {
   const [brand_name, setBrandName] = useState('');
@@ -21,17 +21,14 @@ export default function Register() {
     zip: '',
   });
   const navigate = useNavigate();
-  const [token, setToken] = useState('')
+  const token = localStorage.getItem("token")
 
-  useEffect(() => {
-    setToken(localStorage.getItem("token"))
-  }, [])
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8004/api/register", {
+    fetch(`${process.env.REACT_APP_BASE_URL}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,6 +49,9 @@ export default function Register() {
           // Access response message
           const message = data.message;
           toast.success(message);
+          setTimeout(() => {
+            navigate("/company-list")
+          }, 1000)
         });
       } else {
         return response.json().then((data) => {
@@ -78,7 +78,7 @@ export default function Register() {
         <Navbar />
         <Container>
           <div className="register-container">
-            <h2>Register</h2>
+            <h2>Add New Company</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="brandName">Brand Name</label>
