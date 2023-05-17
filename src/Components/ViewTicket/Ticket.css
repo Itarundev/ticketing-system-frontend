@@ -1,210 +1,312 @@
 .ticket {
-  display: grid;
-  grid-template-columns: 1fr 30%;
-  gap: 25px;
+    display: flex;
+    column-gap: 20px;
 }
 
-.left_div {}
-
-.left_div form {
-  box-shadow: none !important;
-  border-radius: 1rem !important;
-  width: 100% !important;
-  padding: 0 !important;
-  box-shadow: 0px 0px 20px rgb(174 98 231 / 10%) !important;
-  margin-top: 1rem !important;
-  /* overflow: auto;
-  height: 70vh !important; */
-}
-.cretedat_update,.updatebtnwrapper{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
- 
-}
-.cretedat_update p,.updatebtnwrapper p{
-  font-size: 0.8rem !important;
-  color: #AFAFAF !important ;
-
-}
-.updateButton{
-  background-color: white !important;
-  color: black !important;
-  outline: none !important;
-  border: 1px solid lightgray !important;
-  border-radius: 0.5rem !important; 
-  text-transform: capitalize !important;
-  padding: 0.5rem 1rem !important;
-  cursor: pointer ;
-}
-.updateButton:hover{
-  color: white !important;
-  background-color:var(--secondary) !important;
-}
-.ticket-title {
-  font-size: 24px;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-
-.ticket_edit_down {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-
-.ticket_edit_up,.ticketDetails {
-  width: 90%;
-}
-
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-textarea {
-  margin: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc!important;
-  font-size: 16px;
-  padding: .5rem 1rem;
-  width: 100%;
-  height: 200px;
-    
-}
-
-input[type="text"]{
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  padding: .5rem 1rem;
-  width: 100%;
-  height: 45px;
-
-}
-
-select {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  padding:.5rem 1rem;
-  width: 100%;
-  height: 45px;
-}
-
-button[type="submit"] {
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  padding: 10px 20px;
-}
-
-.images-preview {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-}
-
-.image-preview {
-  margin-right: 10px;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.comment-input {
-  margin-bottom: 20px;
-}
-
-.comments {
-  margin-top: 20px;
+.left_div {
+    width: 70%;
 }
 
 .right_div {
-  margin-bottom: 1%;
-  background-color: rgb(182, 119, 38);
+    width: 30%;
+}
+
+.left_div form {
+    box-shadow: none !important;
+    border-radius: 1rem !important;
+    width: 100% !important;
+    padding: 0 !important;
+    box-shadow: 0px 0px 20px rgb(174 98 231 / 10%) !important;
+    margin-top: 1rem !important;
+    /* overflow: auto;
+  height: 70vh !important; */
+}
+
+.cretedat_update,
+.updatebtnwrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cretedat_update p,
+.updatebtnwrapper p {
+    font-size: 0.8rem;
+    color: #AFAFAF;
+    margin-bottom: 10px;
+}
+
+.updateButton {
+    background-color: #0445bd;
+    color: white;
+    outline: none;
+    border: 1px solid #0445bd;
+    border-radius: 5px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all .5s ease-in-out;
+}
+
+.updateButton:hover {
+    background-color: #fff;
+    color: #0445bd;
+    border: 1px solid #0445bd;
+}
+
+.ticket-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.ticket_edit_down {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.ticket_edit_up,
+.right_div {
+    margin: auto auto 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.ticket_edit_up {
+    background-color: #fff;
+    padding: 30px 30px;
+}
+
+.right_div {
+    background-color: #f6f6f6;
+    border: 1px solid #eee;
+    padding: 20px 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+input[type="text"],
+select,
+textarea,
+.datebx_in {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    width: 100%;
+    display: block;
+    margin-top: 0;
+    box-sizing: border-box;
+    outline: none;
+    padding: 0.5rem;
+}
+
+button[type="submit"] {
+    background-color: #0445bd;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.images-preview {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.image-preview {
+    margin-right: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.comment-input {
+    margin-bottom: 20px;
+}
+
+.comments {
+    margin-top: 0;
+    font-size: 20px;
 }
 
 .comment {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
 .comment-meta {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.allcomments_div {
-  overflow: scroll;
-  min-height: 130px;
-  max-width: 550px;
-  max-height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .comment-author {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .comment-date {
-  font-style: italic;
+    font-style: italic;
 }
 
 .comment-text {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 
+
 /* Media queries for different screen sizes */
+
 @media screen and (max-width: 768px) {
-  .ticket {
-    flex-direction: column;
-  }
-
-  .left_div {
-    padding: 10px;
-  }
-
-  .image-preview {
-    width: 80px;
-    height: 80px;
-  }
+    .ticket {
+        flex-direction: column;
+    }
+    .left_div {
+        padding: 10px;
+    }
+    .image-preview {
+        width: 80px;
+        height: 80px;
+    }
 }
 
 @media screen and (max-width: 576px) {
-  .ticket-title {
-    font-size: 20px;
-  }
+    .ticket-title {
+        font-size: 20px;
+    }
+    input[type="text"],
+    textarea,
+    select {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
+    }
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    .comment-author {
+        font-size: 14px;
+    }
+    .comment-date {
+        font-size: 12px;
+    }
+    .comment-text {
+        font-size: 14px;
+    }
+}
 
-  input[type="text"],
-  textarea,
-  select {
-    font-size: 14px;
-    padding: 8px;
+.register-container input {
+    padding: 12px 10px;
     width: 100%;
-  }
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    text-transform: capitalize;
+}
 
-  button[type="submit"] {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
+input[type=text]:hover {
+    box-shadow: 0 0 2pt 0.5pt #ededed;
+}
 
-  .comment-author {
-    font-size: 14px;
-  }
+input[type=text]:focus {
+    box-shadow: 0 0 2pt 1pt #ededed;
+    outline-width: 0px;
+}
 
-  .comment-date {
-    font-size: 12px;
-  }
+.ticket_edit_up .form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 13px;
+}
 
-  .comment-text {
-    font-size: 14px;
-  }
+.ticket_edit_up input,
+.ticket_edit_up select,
+.ticket_edit_up textarea,
+.txtarea {
+    padding: 12px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    text-transform: capitalize;
+    background: #fff;
+}
+
+.txtarea {
+    margin-bottom: 10px;
+    margin-top: 0 !important;
+}
+
+.ticket-image {
+    width: 53px;
+    height: 50px;
+    display: inline-block;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.ticket-image>img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.text_upt {
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+}
+
+.allcomments_div {
+    overflow-y: auto;
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.allcomments_div>p {
+    margin: 0;
+    padding: 50px 0px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.allcomments_div::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.allcomments_div::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+.allcomments_div::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.allcomments_div::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
 }

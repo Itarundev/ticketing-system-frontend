@@ -1,71 +1,102 @@
-.appBar{
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-}
-
-.appBar_left{
-  display: flex;
-  align-items: center;
-}
-
-
 .appBar_left {
     display: flex;
     align-items: center;
-    background-color: white;
-    border-radius: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    margin-right: 1rem;
-  }
-  
-  .search_icon {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: -33px;
+}
+
+.search_icon {
     font-size: 1.5rem;
     margin-right: 0.5rem;
     color: grey;
-  }
-  
-  .filter_icon {
+}
+
+.filter_icon {
     font-size: 1.5rem;
     margin-left: 0.5rem;
     color: grey;
-  }
-  
-  .search_input {
-    outline: none !important ;
+}
+
+.search_input {
+    outline: none !important;
     font-size: 1rem !important;
     width: 100% !important;
     padding: 0.25rem 0.5rem !important;
     height: 70% !important;
-  }
-  
-  .search_input::placeholder {
+}
+
+.search_input::placeholder {
     color: grey;
-  }
-  
-
-.logoutButton{
-  background-color: white !important;
-  color: black !important;
-  outline: none !important;
-  border: 1px solid lightgray !important;
-  border-radius: 0.5rem !important; 
-  text-transform: capitalize !important;
-  padding: 0.5rem 1rem !important;
 }
 
-.logout_btn button:hover{
-  color: white !important;
-  background-color:var(--secondary) !important;
+.logoutButton {
+    background-color: white !important;
+    color: black !important;
+    outline: none !important;
+    border: 1px solid lightgray !important;
+    border-radius: 0.5rem !important;
+    text-transform: capitalize !important;
+    padding: 0.5rem 1rem !important;
 }
 
-.appBar_right{
-  display: flex;
-  align-items: center;
+.logout_btn {
+    display: none;
 }
 
-.profile_info{
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
+.logout_btn_show {
+    display: block;
+    width: 111px;
+    position: absolute;
+    bottom: -70px;
+    right: 0;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.logout_btn button:hover {
+    color: white !important;
+    background-color: var(--secondary) !important;
+}
+
+.appBar {
+    background: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.profile_info {
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+}
+
+.profile_info h6 {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dropdown_btn {
+    position: relative;
+}
+
+.dropdown_btn .logout_btn_show>button {
+    border: none !important;
+    background: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 5px !important;
+}
+
+.dropdown_btn .logout_btn>button:hover {
+    background: var(--primary);
 }

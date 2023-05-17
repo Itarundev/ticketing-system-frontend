@@ -215,8 +215,11 @@ const Dashboard = () => {
         setAllProjects(res.data.projects)
       })
   }
+  const classChange=()=>{
+
+  }
   return (
-    <div className='dashboard_grid'>
+    <div className='dashboard_grid' onClick={classChange}>
       <div>
         <Sidebar />
       </div>
@@ -225,14 +228,15 @@ const Dashboard = () => {
         <Container>
           <div>
             <div className='status_btn'>
-              <div>
+              <div className='search_All'>
+              <label>Search</label>
                 {user.is_admin &&
                   <>
-                    <input type="text" className="search_input" placeholder="Search" onChange={handleSearch} />
+                    <input type="text" className="inp_all" placeholder="Search" onChange={handleSearch} />
                   </>
                 }
               </div>
-              <div>
+              <div className='stus_bx'>
                 <label>Status:</label>
                 <select className='status_select' name="status" value={request.status} onChange={(e) => setRequest({ ...request, status: e.target.value })}>
                   <option value="">All</option>
@@ -242,17 +246,17 @@ const Dashboard = () => {
                 </select>
               </div>
 
-              <div>
+              <div className='datebx'>
                 <label htmlFor="startDate">Start Date</label>
-                <input type="date" id="startDate" value={request.startDate} onChange={handleStartDateChange} />
+                <input type="date" id="startDate" className='datebx_in' value={request.startDate} onChange={handleStartDateChange} />
               </div>
-              <div>
+              <div className='datebx'>
                 <label htmlFor="endDate">End Date</label>
-                <input type="date" id="endDate" value={request.endDate} onChange={handleEndDateChange} />
+                <input type="date" id="endDate" className='datebx_in' value={request.endDate} onChange={handleEndDateChange} />
               </div>
-              <div>
+              <div >
                 {user.is_admin && allProjects.length > 0 && (
-                  <div>
+                  <div className='project_bx'>
                     <label>Project:</label>
                     <select onChange={handleChange} value={request.project_name} className='status_select'>
                       <option value="">Select a project</option>
@@ -263,7 +267,8 @@ const Dashboard = () => {
                   </div>
                 )}
               </div>
-              <div >
+              <div className='btnsr'>
+              <label>&nbsp;</label>
                 <button onClick={()=>{
                   getAllTickets(request)
                   getCSVTickets()
@@ -273,17 +278,22 @@ const Dashboard = () => {
                 </button>
               </div>
               <div className='csvdiv' >
+              <label>&nbsp;</label>
                 <CSVLink className='csvbtn' data={csvTickets} filename={'my-table-data.csv'}>
                   Export to CSV
                 </CSVLink>
 
               </div>
+              <div className='clearbx'>
+              <label>&nbsp;</label>
 <div onClick={clearFilters}>
   Clear Filters
 </div>
+              </div>
             </div>
 
-            <Table className="table" aria-label="tickets table">
+           <div className='responsive-table'>
+            <Table className="table tblall" aria-label="tickets table">
               <TableHead>
 
                 <TableRow>
@@ -323,7 +333,7 @@ const Dashboard = () => {
                       <TableCell>{new Date(ticket.created_at).toLocaleString()}</TableCell>
                       <TableCell>
                         <div className='dltview'>
-                          <Tooltip title="View" arrow>
+                          <Tooltip title="View" arrow className='btnall_tbl view_btn'>
                             <IconButton>
                               <RemoveRedEyeIcon onClick={() => {
                                 const encodedData = encodeURIComponent(JSON.stringify(ticket));
@@ -332,7 +342,7 @@ const Dashboard = () => {
                             </IconButton>
                           </Tooltip>
                           {user.is_admin &&
-                            <Tooltip title="Delete" arrow>
+                            <Tooltip title="Delete" arrow className='btnall_tbl delete_btn'>
                               <IconButton>
                                 < DeleteIcon onClick={() => handleDelete(ticket)} />
                               </IconButton>
@@ -345,7 +355,7 @@ const Dashboard = () => {
               
               </TableBody>
             </Table>
-            <TablePagination
+            <TablePagination className='pagging_bx'
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
               count={totalCount}
@@ -354,13 +364,14 @@ const Dashboard = () => {
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
             />
-          </div>
+          </div></div>
         </Container>
         <ToastContainer />
+        </div>
       </div>
-    </div>
+    
   );
-
+  
 };
 
 export default Dashboard;

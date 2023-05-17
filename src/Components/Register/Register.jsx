@@ -77,32 +77,35 @@ export default function Register() {
       <div>
         <Navbar />
         <Container>
+          <div className='title_txt'>
+          <h1>Add New Company</h1>
+          </div>
           <div className="register-container">
-            <h2>Add New Company</h2>
-            <form onSubmit={handleSubmit}>
+           
+            <form onSubmit={handleSubmit} className='frmdf'>
               <div className="form-group">
                 <label htmlFor="brandName">Brand Name</label>
-                <input type="text" className="form-control" id="brandName" placeholder="Enter brand name" value={brand_name} onChange={(e) => setBrandName(e.target.value)} required />
+                <input type="text" className="" id="brandName" placeholder="Enter brand name" value={brand_name} onChange={(e) => setBrandName(e.target.value)} required />
               </div>
               <div className="form-group">
                 <label htmlFor="contactPerson">Contact Person</label>
-                <input type="text" className="form-control" id="contactPerson" placeholder="Enter contact person" value={contact_person} onChange={(e) => setContactPerson(e.target.value)} required />
+                <input type="text" className="" id="contactPerson" placeholder="Enter contact person" value={contact_person} onChange={(e) => setContactPerson(e.target.value)} required />
               </div>
               <div className="form-group">
                 <label htmlFor="project">Project</label>
-                <input type="text" className="form-control" id="project" placeholder="Enter project name" value={project} onChange={(e) => setProject(e.target.value)} required />
+                <input type="text" className="" id="project" placeholder="Enter project name" value={project} onChange={(e) => setProject(e.target.value)} required />
               </div>
               <div className="form-group">
                 <label htmlFor="street">Street</label>
-                <input type="text" className="form-control" id="street" placeholder="Enter street" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
+                <input type="text" className="" id="street" placeholder="Enter street" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
               </div>
               <div className="form-group">
                 <label htmlFor="city">City</label>
-                <input type="text" className="form-control" id="city" placeholder="Enter city" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
+                <input type="text" className="" id="city" placeholder="Enter city" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
               </div>
               <div className="form-group">
                 <label htmlFor="state">State</label>
-                <input type="text" className="form-control" id="state" placeholder="Enter state" value={address.state} onChange={(e) => setAddress({ ...address, state: e.target.value })} />
+                <input type="text" className="" id="state" placeholder="Enter state" value={address.state} onChange={(e) => setAddress({ ...address, state: e.target.value })} />
               </div>
               <div className="form-group">
                 <label htmlFor="zip">Zip Code</label>
@@ -110,17 +113,19 @@ export default function Register() {
               </div>
               <div className="form-group">
                 <label htmlFor="mobileNo">Mobile number</label>
-                <input type="tel" className="form-control" id="mobileNo" placeholder="Enter mobile number" value={mobileNo} onChange={(e) => setMobileNo(e.target.value)} required />
+                <input type="tel" className="" id="mobileNo" placeholder="Enter mobile number" value={mobileNo} onChange={(e) => setMobileNo(e.target.value)} required />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email address</label>
-                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input type="email" className="" id="email" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type="password" className="" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               </div>
+              <div className="bnsx">            
               <button type="submit" className="btn btn-primary submitBtn">Submit</button>
+              </div>
             </form>
             <ToastContainer />
           </div>
