@@ -135,6 +135,7 @@ const TicketForm = () => {
   const supportRelatedToRadioOptions = supportType ? supportRelatedToOptions[supportType] : null;
 
   return (
+    
     <div className='dashboard_grid' >
       <div>
         <Sidebar />

@@ -1,27 +1,20 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
-const LocalStorageContext = createContext();
+const ThemeContext = createContext();
 
-const LocalStorageProvider = ({ children }) => {
-  const [localStorageValue, setLocalStorageValue] = useState(localStorage.getItem('side') || 'sideBar');
+const ThemeProvider = ({ children }) => {
+  const [themeClass, setThemeClass] = useState('sideBar');
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setLocalStorageValue(localStorage.getItem('side') || 'sideBar');
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+  const toggleTheme = () => {
+    const newThemeClass = themeClass === 'sideBar' ? 'sideBar hide_nav' : 'sideBar';
+    setThemeClass(newThemeClass);
+  };
 
   return (
-    <LocalStorageContext.Provider value={localStorageValue}>
+    <ThemeContext.Provider value={{ themeClass, toggleTheme }}>
       {children}
-    </LocalStorageContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
-export { LocalStorageContext, LocalStorageProvider };
+export { ThemeContext, ThemeProvider };

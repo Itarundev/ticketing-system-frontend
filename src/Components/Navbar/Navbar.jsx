@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { Button } from '@mui/material';
 import { Typography } from '@mui/material';
@@ -8,6 +8,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import "./Navbar.css"
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuIcon from '@mui/icons-material/Menu';
+import { ThemeContext } from './StorageContext';
 
 
 const Navbar = () => {
@@ -30,32 +31,23 @@ const Navbar = () => {
     else{
       setLogoutbtn('logout_btn')
     }
+    
 
      
   }
 
 
-const showHide=()=>{
-  if(!localStorage.getItem('side'))
-  {
-    localStorage.setItem("side", "sideBar");
-  }
-  else if(localStorage.getItem('side')==='sideBar')
-  {  
-    localStorage.setItem("side", "sideBar hide_nav");
-  }
-  else{
-    localStorage.setItem("side", "sideBar");
-  }
+  const { toggleTheme } = useContext(ThemeContext);
 
-
-}
+  const handleThemeChange = () => {
+    toggleTheme();
+  };
 
   return (
     <Box className="appBar">
 
       <div className='appBar_right'>
-      <MenuIcon onClick={showHide}/>
+      <MenuIcon onClick={handleThemeChange}/>
 
         <div className='dropdown_btn'>
         <div className='profile_info d-flex' id='usm_ck' onClick={handletoggle} >

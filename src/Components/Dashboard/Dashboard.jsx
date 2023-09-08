@@ -18,6 +18,7 @@ import { IconButton } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import { CSVLink } from 'react-csv';
+import { ThemeProvider } from '../Navbar/StorageContext';
 
 
 
@@ -26,9 +27,9 @@ const Dashboard = () => {
   const user = JSON.parse(localStorage.getItem("user"))
   const [tickets, setTickets] = useState([]);
   const navigate = useNavigate();
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [totalCount, setTotalCount] = useState(0)
+  const [page, setPage] = useState(+0);
+  const [rowsPerPage, setRowsPerPage] = useState(+10);
+  const [totalCount, setTotalCount] = useState(+0)
   const [orderBy, setOrderBy] = useState('created_at');
   const [order, setOrder] = useState('desc');
   const [allProjects, setAllProjects] = useState([])
@@ -120,7 +121,7 @@ const Dashboard = () => {
           setTickets(response.data.tickets);
         if(response.data.count)
         {
-          setTotalCount(response.data.count)
+          setTotalCount(parseInt(response.data.count, 10));
         }
       }
       )
@@ -219,6 +220,7 @@ const Dashboard = () => {
 
   }
   return (
+  
     <div className='dashboard_grid' onClick={classChange}>
       <div>
         <Sidebar />
@@ -334,17 +336,17 @@ const Dashboard = () => {
                       <TableCell>
                         <div className='dltview'>
                           <Tooltip title="View" arrow className='btnall_tbl view_btn'>
-                            <IconButton>
+                            <IconButton  >
                               <RemoveRedEyeIcon onClick={() => {
                                 const encodedData = encodeURIComponent(JSON.stringify(ticket));
                                 navigate(`/ticket-view?data=${encodedData}`)
-                              }} />
+                              }}/>
                             </IconButton>
                           </Tooltip>
                           {user.is_admin &&
                             <Tooltip title="Delete" arrow className='btnall_tbl delete_btn'>
-                              <IconButton>
-                                < DeleteIcon onClick={() => handleDelete(ticket)} />
+                              <IconButton >
+                                < DeleteIcon  onClick={() => handleDelete(ticket)} />
                               </IconButton>
                             </Tooltip>
                           }

@@ -1,15 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Home } from '@mui/icons-material';
-import { Typography } from '@mui/material';
 import { useNavigate, useLocation } from "react-router-dom";
 import CreateIcon from '@mui/icons-material/Create';
-import AddIcon from '@mui/icons-material/Add';
 import "./Sidebar.css"
 import Logo from "../../Assets/logo_login.svg"
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-import MenuIcon from '@mui/icons-material/Menu';
-import { LocalStorageContext } from '../Navbar/StorageContext';
+import { ThemeContext } from '../Navbar/StorageContext';
 
 
 const Sidebar = () => {
@@ -17,22 +13,7 @@ const Sidebar = () => {
   const location = useLocation();
   const [activeRoute, setActiveRoute] = useState(location.pathname);
   const user = JSON.parse(localStorage.getItem("user"))
-  const[classChange,setClassChange]=useState(localStorage.getItem('side')||'sidebar')
-  const localStorageValue = useContext(LocalStorageContext);
-
-  useEffect(()=>{
-console.log(localStorageValue,"Local")
-  },[localStorageValue])
-
-  const classChangefun=()=>{
-    if(classChange==='sideBar')
-    {
-      setClassChange("sideBar hide_nav")
-    }else{
-      setClassChange("sideBar")
-    }
-  
-  }
+  const { themeClass } = useContext(ThemeContext);
 
   const handleListItemClick = (route) => {
     navigate(route);
@@ -40,8 +21,8 @@ console.log(localStorageValue,"Local")
   };
 
   return (
-    <div className={localStorageValue}>
-      <div className="sidebar_heading" onClick={classChangefun}>       
+    <div className={themeClass}>
+      <div className="sidebar_heading" >       
           <img src={Logo} alt="" className='img-res'  />    
           {/* <div className='appBar_left'>     
       <MenuIcon />
