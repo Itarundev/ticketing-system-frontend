@@ -47,7 +47,7 @@ const Navbar = () => {
     <Box className="appBar">
 
       <div className='appBar_right'>
-      <MenuIcon onClick={handleThemeChange}/>
+      {/* <MenuIcon onClick={handleThemeChange}/> */}
 
         <div className='dropdown_btn'>
         <div className='profile_info d-flex' id='usm_ck' onClick={handletoggle} >
