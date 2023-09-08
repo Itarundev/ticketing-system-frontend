@@ -135,6 +135,7 @@ const TicketForm = () => {
   const supportRelatedToRadioOptions = supportType ? supportRelatedToOptions[supportType] : null;
 
   return (
+    
     <div className='dashboard_grid' >
       <div>
         <Sidebar />
@@ -142,11 +143,16 @@ const TicketForm = () => {
       <div>
         <Navbar />
         <Container>
+        <div className='title_txt'>
+        <h1>Add New Ticket</h1>
+          </div>
+          <div className='frmedit white_card'>
           <form onSubmit={handleSubmit}>
-          <h2>Add New Ticket</h2>
-          <br />
-          {user.is_admin && allProjects.length > 0 && (
-              <div>
+        
+        <div className='left_ct'>
+        {user.is_admin && allProjects.length > 0 && (
+              <div className='slct'>
+                <label htmlFor="title">Project</label>
                 <select onChange={handleChange} defaultValue="">
                   <option value="" disabled>Select a project</option>
                   {allProjects.map((project, index) => (
@@ -155,38 +161,9 @@ const TicketForm = () => {
                 </select>
               </div>
             )}
-            <div>
-              <label>Support Type</label>
-              <div className="radio-group">
-                {support_types.map(type => (
-                  <label key={type}>
-                    <input
-                      type="radio"
-                      name="supportType"
-                      value={type}
-                      checked={supportType === type}
-                      onChange={handleSupportTypeChange}
-                    />
-                    {type}
-                  </label>
-                ))}
-              </div>
-            </div>
 
-
-            {supportRelatedToRadioOptions && (
-              <div className="radio-group">
-                <label htmlFor="supportRelatedTo">Support Related To</label>
-                {supportRelatedToRadioOptions.map((option, index) => (
-                  <div key={index}>
-                    <input type="radio" id={`supportRelatedTo-${index}`} name="supportRelatedTo" value={option} checked={supportRelatedTo === option} onChange={(e) => setSupportRelatedTo(e.target.value)} />
-                    <label htmlFor={`supportRelatedTo-${index}`}>{option}</label>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <div>
+            
+<div>
               <label htmlFor="title">Title</label>
               <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
@@ -199,9 +176,9 @@ const TicketForm = () => {
 
 
 
-            <div>
+            <div className='graybx fcngbx'>
               <label>Facing Issue On</label>
-              <div>
+              <div className='facing_radio'>
                 {facingIssues.map(type => (
                   <label key={type}>
                     <input
@@ -211,7 +188,7 @@ const TicketForm = () => {
                       checked={facingIssueOn === type}
                       onChange={handleIssueTypeChange}
                     />
-                    {type}
+                   <span> {type}</span>
                   </label>
                 ))}
               </div>
@@ -223,8 +200,49 @@ const TicketForm = () => {
             </div>
 
             <button type="submit">Submit</button>
+        </div>
+
+        <div className='right_ct'>
+         
+        <div className='graybx fcngbx'>
+              <label>Support Type</label>
+              <div className="facing_radio">
+                {support_types.map(type => (
+                  <label key={type}>
+                    <input
+                      type="radio"
+                      name="supportType"
+                      value={type}
+                      checked={supportType === type}
+                      onChange={handleSupportTypeChange}
+                    />
+                   <span> {type}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+
+            {supportRelatedToRadioOptions && (
+              <div className='graybx fcngbx mt10'>
+                <label htmlFor="supportRelatedTo">Support Related To</label>
+                <div className='facing_radio1'>
+                {supportRelatedToRadioOptions.map((option, index) => (                 
+                  <div key={index} className='flex_ord'>
+                    <input type="radio" id={`supportRelatedTo-${index}`} name="supportRelatedTo" value={option} checked={supportRelatedTo === option} onChange={(e) => setSupportRelatedTo(e.target.value)} />
+                    <label htmlFor={`supportRelatedTo-${index}`}>{option}</label>
+                  </div>
+                ))}
+              </div></div>
+            )}
+
+        </div>
+
+
+        
             <ToastContainer />
           </form>
+          </div>
         </Container>
       </div>
     </div>

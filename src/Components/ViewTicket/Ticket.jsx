@@ -149,16 +149,19 @@ const Ticket = () => {
       <div>
         <Navbar />
         <Container>
+        <div className='title_txt'>
+        <h1 className="ticket-title">{ticket.title}</h1>
+          </div>
           <div className="ticket">
             <div className='left_div'>
-              <h3 className="ticket-title">{ticket.title}</h3>
+             
               <form onSubmit={handleSubmit}>
                 <div className='ticket_edit_up'>
 
                   <div className='ticket_edit_down'>
                     <div className="form-group">
                       <label>Status:</label>
-                      <select className="form-control" name="status" value={formState.status} onChange={handleChange} disabled={!is_admin}>
+                      <select className="" name="status" value={formState.status} onChange={handleChange} disabled={!is_admin}>
                         <option value="Pending">Pending</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Resolved">Resolved</option>
@@ -166,15 +169,15 @@ const Ticket = () => {
                     </div>
                     <div className="form-group">
                       <label>Support Type:</label>
-                      <input className="form-control" type="text" name="support_type" value={formState.support_type} onChange={handleChange} disabled />
+                      <input className="" type="text" name="support_type" value={formState.support_type} onChange={handleChange} disabled />
                     </div>
                     <div className="form-group">
                       <label>Support Related To:</label>
-                      <input className="form-control" type="text" name="support_related_to" value={formState.support_related_to} onChange={handleChange} disabled />
+                      <input className="" type="text" name="support_related_to" value={formState.support_related_to} onChange={handleChange} disabled />
                     </div>
                     <div className="form-group">
                       <label>Facing Issue On:</label>
-                      <input className="form-control" type="text" name="facing_issue_on" value={formState.facing_issue_on} onChange={handleChange} disabled />
+                      <input className="" type="text" name="facing_issue_on" value={formState.facing_issue_on} onChange={handleChange} disabled />
 
                     </div>
                   </div>
@@ -182,14 +185,25 @@ const Ticket = () => {
 
                   <div className="form-group">
                     <label>Description:</label>
-                    <textarea className="form-control" name="description" value={formState.description} onChange={handleChange} disabled={!is_admin} />
+                    <textarea className="" name="description" value={formState.description} onChange={handleChange} disabled={!is_admin} />
                   </div>
-                </div>
-                <div className='ticketDetails'>
+
+                  <div className='text_upt'>
+                  {ticket.image && ticket.image.length > 0 && (
+                    <div className="ticket-image" style={{ overflowX: ticket.image.length > 3 ? 'auto' : 'visible' }}>
+                      {ticket.image.map((img, index) => (
+                        <img src={`${process.env.REACT_APP_BASE_URL}/${img.url}`} key={index} alt={`Image ${index}`} />
+                      ))}
+                    </div>
+                  )}
+
                   <div className='cretedat_update'>
                     <p className="ticket-created-at">Created At: {new Date(ticket.created_at).toLocaleString()}</p>
                     <p className="ticket-updated-at">Updated At: {new Date(ticket.updated_at).toLocaleString()}</p>
                   </div>
+
+
+                  
                   <div className='updatebtnwrapper'>
                     {is_admin ? (
                       <button onClick={handleSubmit} className="updateButton">Update</button>
@@ -203,14 +217,13 @@ const Ticket = () => {
 
 
 
-                  {ticket.image && ticket.image.length > 0 && (
-                    <div className="ticket-image" style={{ overflowX: ticket.image.length > 3 ? 'auto' : 'visible' }}>
-                      {ticket.image.map((img, index) => (
-                        <img src={`${process.env.REACT_APP_BASE_URL}/${img.url}`} key={index} alt={`Image ${index}`} />
-                      ))}
-                    </div>
-                  )}
+                
                 </div>
+
+
+
+                </div>
+                
               </form>
 
 
@@ -243,15 +256,15 @@ const Ticket = () => {
               </div>
               <div>
 
-                <div className="form-group">
+                <div className="form-group ">
                   <label>Comment:</label>
-                  <textarea className="form-control" name="commentinput" onChange={handleCommentChange} autoFocus />
+                  <textarea className="txtarea" name="commentinput" onChange={handleCommentChange} autoFocus />
                 </div>
                 <label htmlFor="images">Images</label>
-                <input type="file" multiple id="images" name="images" onChange={handleImageChange} />
+                <input type="file" className='txtarea' multiple id="images" name="images" onChange={handleImageChange} />
               </div>
-              <br />
-              <button onClick={() => { handleComment() }}>Submit</button>
+             
+              <button className='updateButton mt10' onClick={() => { handleComment() }}>Submit</button>
             </div>
 
             <ToastContainer />

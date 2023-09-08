@@ -1,31 +1,35 @@
 :root {
-  --primary: #183563;
-  --secondary: #58a2be;
-  --Error: #e41919;
-  --grey: #666666;
+    --primary: #004ede;
+    --secondary: #0445bd;
+    --Error: #e41919;
+    --grey: #666666;
 }
 
-.dashboard_grid {
-  display: grid;
 
+/* .dashboard_grid {
+    display: grid;
 }
 
 @media (min-width: 768px) {
-  .dashboard_grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .dashboard_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-
 
 @media (min-width: 1024px) {
-  .dashboard_grid {
-    grid-template-columns: 240px 1fr;
-  }
-}
+    .dashboard_grid {
+        grid-template-columns: 240px 1fr;
+    }
+} */
 
 .container {
-  padding: 0 24px;
-  height: 88vh;
-  overflow: auto;
-  background-color: #F9FAFB;
+    padding: 0 24px;
+    height: 88vh;
+    overflow: auto;
+    background-color: #F9FAFB;
+}
+
+.dashboard_grid {
+    padding-top: 56px;
+    margin-left: 240px;
 }

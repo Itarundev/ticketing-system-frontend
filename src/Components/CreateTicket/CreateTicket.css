@@ -1,55 +1,43 @@
-
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+form {
     font-family: sans-serif;
-    padding: 2rem;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    background-color: #ffffff;
-    width: 80%;
-    margin: auto;
-    margin-top: 8%;
-  }
-  
-  label {
+}
+
+label {
     margin-top: 1rem;
     font-weight: bold;
-  }
-  
-  .radio-group {
+}
+
+.radio-group {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     margin-top: 0.5rem;
-  }
-  
-  .radio-group label {
+}
+
+.radio-group label {
     margin-left: 1rem;
-  }
-  
-  input[type="radio"] {
+}
+
+input[type="radio"] {
     margin-right: 0.5rem;
-  }
-  
-  input[type="text"],
-  textarea {
+}
+
+input[type="text"],
+textarea {
     width: 100%;
     margin-top: 0.5rem;
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  input[type="file"] {
-    margin-top: 0.5rem;
-  }
+}
 
-  button[type="submit"] {
+input[type="file"] {
+    margin-top: 0.5rem;
+}
+
+button[type="submit"] {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     background-color: #0077cc;
@@ -59,15 +47,119 @@
     font-size: 1rem;
     cursor: pointer;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #005fa3;
+}
+
+button[type="submit"]:hover {
+    background-color: #025ab8;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .error-message {
+}
+
+.error-message {
     margin-top: 0.5rem;
     color: red;
-  }
-  
+}
+
+.submitBtn {
+    margin-top: 0 !important;
+    margin-bottom: 0;
+}
+
+.frmedit form {
+    display: flex;
+    margin-top: 0;
+}
+
+.left_ct,
+.right_ct {
+    width: 50%;
+}
+
+.frmedit form .facing_radio label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.fcngbx>label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.left_ct>div {
+    margin-bottom: 15px;
+}
+
+.frmedit form input,
+.frmedit form textarea,
+.frmedit form select {
+    padding: 12px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    text-transform: capitalize;
+    display: block;
+    margin-top: 0;
+    font-size: 13px;
+}
+
+.facing_radio,
+.facing_radio1 {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.facing_radio>label,
+.flex_ord {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-align: left;
+    justify-content: left;
+    border: 1px solid #ddd;
+    padding: 8px 6px;
+}
+
+.facing_radio>label {
+    width: 27%;
+}
+
+.flex_ord {
+    width: 44%;
+}
+
+.facing_radio>label>input {
+    margin: 0 5px 0 0;
+    width: initial;
+}
+
+.right_ct {
+    margin-left: 20px;
+}
+
+.flex_ord {
+    margin-bottom: 5px;
+}
+
+.flex_ord>input {
+    margin: 0 5px 0 0;
+    width: initial !important;
+}
+
+.flex_ord>label {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.left_ct label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}

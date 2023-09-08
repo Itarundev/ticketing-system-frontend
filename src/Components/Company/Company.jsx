@@ -81,14 +81,15 @@ const Company = () => {
       </div>
       <div>
         <Navbar />
+       
+        <Container>
         <div className='Add_company_btn'>
            <button onClick={()=>navigate('/register-company')}>
             Add Company
            </button>
         </div>
-        <Container>
-          <div>
-            <Table className="table" aria-label="tickets table">
+        <div className='responsive-table'>
+            <Table className="table tblall" aria-label="tickets table">
               <TableHead>
                 <TableRow>
                   <TableCell> <h3>ID</h3></TableCell>
@@ -110,12 +111,12 @@ const Company = () => {
                     <TableCell>{company.project}</TableCell>
                     <TableCell>{company.mobile_no}</TableCell>
                     <TableCell>{new Date(company.created_at).toLocaleString()}</TableCell>
-                    <TableCell><DeleteIcon onClick={()=>{handleDelete(company)}}/></TableCell>
+                    <TableCell className='single_delet'><DeleteIcon onClick={()=>{handleDelete(company)}}/></TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-            <TablePagination
+            <TablePagination className='pagging_bx1'
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
               count={totalCount}

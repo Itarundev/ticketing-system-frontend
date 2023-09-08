@@ -5,16 +5,17 @@
     border-right: 1px solid lightgray;
     position: fixed;
     width: 240px;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .sidebar_heading {
     background-color: white;
     color: var(--primary);
-    height: 7.5em;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
 }
 
 .sidebar_heading h6 {
@@ -25,25 +26,60 @@
     color: var(--primary);
     font-weight: 600;
     font-size: 1.5rem;
-    
 }
-
 
 .sidebar_list {
     overflow: auto;
     height: 100%;
 }
 
-.sidebar_item{
-        padding: 1rem;
-        display: flex;
-        align-items: center;
+.sidebar_item {
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
 }
-.sidebar_item span{
+
+.sidebar_item span {
     margin-left: 1rem;
 }
+
 .sidebar_item.active {
     background-color: var(--primary);
     color: white;
-  }
-  
+}
+
+.img-res {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.sidebar_heading>img {
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.appBar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-left: 240px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: end;
+}
+
+.appBar,
+.sidebar_heading {
+    height: 50px;
+}
+
+.hide_nav {
+    left: -100%;
+}
