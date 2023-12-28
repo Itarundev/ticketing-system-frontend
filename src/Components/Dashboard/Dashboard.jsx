@@ -306,7 +306,8 @@ const Dashboard = () => {
                   <TableCell><h3>Title</h3></TableCell>
                   <TableCell><h3>Facing Issue On</h3></TableCell>
                   <TableCell><h3>Created By</h3></TableCell>
-                  <TableCell><h3>Status</h3>
+                  <TableCell><h3>Status</h3></TableCell>
+                  <TableCell><h3>End Date</h3>
                   </TableCell>
                   <TableCell>
                     <TableSortLabel
@@ -332,6 +333,7 @@ const Dashboard = () => {
                       <TableCell>{ticket.facing_issue_on}</TableCell>
                       <TableCell>{ticket.created_by_name}</TableCell>
                       <TableCell>{ticket.status}</TableCell>
+                      <TableCell>{ticket.end_date?new Date(ticket.end_date??null).toLocaleString():null}</TableCell>
                       <TableCell>{new Date(ticket.created_at).toLocaleString()}</TableCell>
                       <TableCell>
                         <div className='dltview'>
