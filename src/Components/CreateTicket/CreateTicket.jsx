@@ -13,6 +13,7 @@ const TicketForm = () => {
   const [supportRelatedTo, setSupportRelatedTo] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [facingIssueOn, setFacingIssueOn] = useState('');
   const [images, setImages] = useState([]);
   const [support_types, setSupport_Types] = useState([]);
@@ -75,7 +76,7 @@ const TicketForm = () => {
   formData.append('title', title);
   formData.append('description', description);
   formData.append('facing_issue_on', facingIssueOn);
-
+  formData.append('end_date', endDate);
   const handleChange = (event) => {
     setSelectedProject(event.target.value)
   };
@@ -220,6 +221,11 @@ const TicketForm = () => {
                   </label>
                 ))}
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="endDate">End Date</label>
+              <input id="endDate" name="endDate" type='date' value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </div>
 
 
