@@ -23,6 +23,7 @@ const Ticket = () => {
     support_type: ticket.support_type,
     support_related_to: ticket.support_related_to,
     facing_issue_on: ticket.facing_issue_on,
+    end_date: ticket.end_date
   });
 
   const token = localStorage.getItem("token")
@@ -200,6 +201,7 @@ const Ticket = () => {
                   <div className='cretedat_update'>
                     <p className="ticket-created-at">Created At: {new Date(ticket.created_at).toLocaleString()}</p>
                     <p className="ticket-updated-at">Updated At: {new Date(ticket.updated_at).toLocaleString()}</p>
+                    <p className="ticket-end-at">End Date: {ticket.end_date?new Date(ticket.end_date??null).toLocaleString():null}</p>
                   </div>
 
 
