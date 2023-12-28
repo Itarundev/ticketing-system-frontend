@@ -95,6 +95,7 @@ const Company = () => {
                   <TableCell> <h3>ID</h3></TableCell>
                   <TableCell> <h3>Brand Name</h3></TableCell>
                   <TableCell><h3>Contact Person</h3></TableCell>
+                  <TableCell><h3>Email</h3></TableCell>
                   <TableCell><h3>Project</h3></TableCell>
                   <TableCell><h3>Mobile No.</h3></TableCell>
                   <TableCell><h3>Created At</h3></TableCell>
@@ -108,9 +109,12 @@ const Company = () => {
                       <TableCell>{page * rowsPerPage + index+1}</TableCell>
                     <TableCell>{company.brand_name}</TableCell>
                     <TableCell>{company.contact_person}</TableCell>
+                    <TableCell>{company.email}</TableCell>
                     <TableCell>{company.project}</TableCell>
                     <TableCell>{company.mobile_no}</TableCell>
                     <TableCell>{new Date(company.created_at).toLocaleString()}</TableCell>
+
+                    
                     <TableCell className='single_delet'><DeleteIcon onClick={()=>{handleDelete(company)}}/></TableCell>
                   </TableRow>
                 ))}
