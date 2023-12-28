@@ -307,7 +307,7 @@ const Dashboard = () => {
                   <TableCell><h3>Facing Issue On</h3></TableCell>
                   <TableCell><h3>Created By</h3></TableCell>
                   <TableCell><h3>Status</h3></TableCell>
-                  <TableCell><h3>End Date</h3>
+                  <TableCell><h3>DeadLine</h3>
                   </TableCell>
                   <TableCell>
                     <TableSortLabel

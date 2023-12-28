@@ -15,6 +15,7 @@ const TicketForm = () => {
   const [description, setDescription] = useState('');
   const [endDate, setEndDate] = useState('');
   const [facingIssueOn, setFacingIssueOn] = useState('');
+  const [priority, setPriority] = useState('');
   const [images, setImages] = useState([]);
   const [support_types, setSupport_Types] = useState([]);
   const [supportSubType, setSupportSubType] = useState({});
@@ -76,6 +77,7 @@ const TicketForm = () => {
   formData.append('title', title);
   formData.append('description', description);
   formData.append('facing_issue_on', facingIssueOn);
+  formData.append('priority', priority);
   formData.append('end_date', endDate);
   const handleChange = (event) => {
     setSelectedProject(event.target.value)
@@ -175,7 +177,14 @@ const TicketForm = () => {
             </div>
 
 
-
+            <div className="form-group">
+                      <label>Priority:</label>
+                      <select className="" name="priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                      </select>
+                    </div>
 
             <div className='graybx fcngbx'>
               <label>Facing Issue On</label>

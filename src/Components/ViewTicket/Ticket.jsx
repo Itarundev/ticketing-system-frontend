@@ -169,6 +169,14 @@ const Ticket = () => {
                       </select>
                     </div>
                     <div className="form-group">
+                      <label>Priority:</label>
+                      <select className="" name="priority" value={formState.priority} onChange={handleChange} disabled={!is_admin}>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
                       <label>Support Type:</label>
                       <input className="" type="text" name="support_type" value={formState.support_type} onChange={handleChange} disabled />
                     </div>
@@ -201,7 +209,7 @@ const Ticket = () => {
                   <div className='cretedat_update'>
                     <p className="ticket-created-at">Created At: {new Date(ticket.created_at).toLocaleString()}</p>
                     <p className="ticket-updated-at">Updated At: {new Date(ticket.updated_at).toLocaleString()}</p>
-                    <p className="ticket-end-at">End Date: {ticket.end_date?new Date(ticket.end_date??null).toLocaleString():null}</p>
+                    <p className="ticket-end-at">DeadLine: {ticket.end_date?new Date(ticket.end_date??null).toLocaleString():null}</p>
                   </div>
 
 
