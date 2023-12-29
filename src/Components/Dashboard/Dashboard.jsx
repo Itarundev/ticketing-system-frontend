@@ -39,6 +39,7 @@ const Dashboard = () => {
     status: '',
     project_name: '',
     startDate: '',
+    priority:'',
     endDate: new Date().toISOString().substring(0, 10)
   })
 
@@ -50,12 +51,14 @@ const Dashboard = () => {
       project_name: '',
       startDate: '',
       endDate: new Date().toISOString().substring(0, 10),
+      priority:'',
     });
     getAllTickets({
       created_by_name: '',
       status: '',
       project_name: '',
       startDate: '',
+      priority:'',
       endDate: new Date().toISOString().substring(0, 10),
     })
   };
@@ -248,6 +251,16 @@ const Dashboard = () => {
                 </select>
               </div>
 
+              <div className='stus_bx'>
+                <label>Priority:</label>
+                <select className='status_select' name="priority" value={request.priority} onChange={(e) => setRequest({ ...request, priority: e.target.value })}>
+                  <option value="">All</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+
               <div className='datebx'>
                 <label htmlFor="startDate">Start Date</label>
                 <input type="date" id="startDate" className='datebx_in' value={request.startDate} onChange={handleStartDateChange} />
@@ -307,6 +320,7 @@ const Dashboard = () => {
                   <TableCell><h3>Facing Issue On</h3></TableCell>
                   <TableCell><h3>Created By</h3></TableCell>
                   <TableCell><h3>Status</h3></TableCell>
+                  <TableCell><h3>Priority</h3></TableCell>
                   <TableCell><h3>DeadLine</h3>
                   </TableCell>
                   <TableCell>
@@ -333,6 +347,7 @@ const Dashboard = () => {
                       <TableCell>{ticket.facing_issue_on}</TableCell>
                       <TableCell>{ticket.created_by_name}</TableCell>
                       <TableCell>{ticket.status}</TableCell>
+                      <TableCell>{ticket.priority}</TableCell>
                       <TableCell>{ticket.end_date?new Date(ticket.end_date??null).toLocaleString():null}</TableCell>
                       <TableCell>{new Date(ticket.created_at).toLocaleString()}</TableCell>
                       <TableCell>
