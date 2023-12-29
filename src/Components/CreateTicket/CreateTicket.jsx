@@ -232,10 +232,7 @@ const TicketForm = () => {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="endDate">End Date</label>
-              <input id="endDate" name="endDate" type='date' value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-            </div>
+         
 
 
             {supportRelatedToRadioOptions && (
@@ -250,6 +247,11 @@ const TicketForm = () => {
                 ))}
               </div></div>
             )}
+
+<div>
+              <label htmlFor="endDate">End Date</label>
+              <input id="endDate" name="endDate" type='date' value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+            </div>
 
         </div>
 
