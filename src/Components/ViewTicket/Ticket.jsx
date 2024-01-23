@@ -23,6 +23,7 @@ const Ticket = () => {
     support_type: ticket.support_type,
     support_related_to: ticket.support_related_to,
     facing_issue_on: ticket.facing_issue_on,
+    priority:ticket.priority,
     end_date: ticket.end_date
   });
 
