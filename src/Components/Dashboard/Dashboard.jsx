@@ -39,7 +39,7 @@ const Dashboard = () => {
     status: '',
     project_name: '',
     startDate: '',
-    priority:'',
+    priority:'Low',
     endDate: new Date().toISOString().substring(0, 10)
   })
 
@@ -51,14 +51,14 @@ const Dashboard = () => {
       project_name: '',
       startDate: '',
       endDate: new Date().toISOString().substring(0, 10),
-      priority:'',
+      priority:'Low',
     });
     getAllTickets({
       created_by_name: '',
       status: '',
       project_name: '',
       startDate: '',
-      priority:'',
+      priority:'Low',
       endDate: new Date().toISOString().substring(0, 10),
     })
   };
