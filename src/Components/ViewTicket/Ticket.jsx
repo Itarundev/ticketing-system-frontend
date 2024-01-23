@@ -107,7 +107,8 @@ const Ticket = () => {
       status: formState.status,
       support_type: formState.support_type,
       support_related_to: formState.support_related_to,
-      facing_issue_on: formState.facing_issue_on
+      facing_issue_on: formState.facing_issue_on,
+      priority:formState.priority
     },
       {
         headers: {
