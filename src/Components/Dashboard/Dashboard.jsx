@@ -357,7 +357,7 @@ const Dashboard = () => {
                           <Tooltip title="View" arrow className='btnall_tbl view_btn'>
                             <IconButton  >
                               <RemoveRedEyeIcon onClick={() => {
-                               const encodedData = encodeURIComponent(JSON.stringify({ ticket, ...developers }));
+                               const encodedData = encodeURIComponent(JSON.stringify({ ...ticket,developers }));
                                navigate(`/ticket-view?data=${encodedData}`);
                                
                               }}/>
