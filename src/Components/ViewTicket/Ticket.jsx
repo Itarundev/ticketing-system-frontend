@@ -110,7 +110,8 @@ const Ticket = () => {
       support_type: formState.support_type,
       support_related_to: formState.support_related_to,
       facing_issue_on: formState.facing_issue_on,
-      priority:formState.priority
+      priority:formState.priority,
+      assigned_to:formState.assigned_to
     },
       {
         headers: {
@@ -192,6 +193,17 @@ const Ticket = () => {
                       <input className="" type="text" name="facing_issue_on" value={formState.facing_issue_on} onChange={handleChange} disabled />
 
                     </div>
+                    {is_admin && ticket?.developers.length > 0 && (
+                  <div className='form-group'>
+                    <label>Developer:</label>
+                    <select onChange={handleChange} value={ticket?.assigned_to||"Not Assigned"} name="assigned_to" className='assigned_to'>
+                      <option value="">Select a Developer</option>
+                      {ticket?.developers.map((project, index) => (
+                        <option key={index} value={project.name}>{project.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
                   </div>
 
 
