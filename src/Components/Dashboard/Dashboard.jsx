@@ -41,6 +41,7 @@ const Dashboard = () => {
     project_name: '',
     startDate: '',
     priority:'',
+    assigned_to:'',
     endDate: new Date().toISOString().substring(0, 10)
   })
 
@@ -51,6 +52,7 @@ const Dashboard = () => {
       status: '',
       project_name: '',
       startDate: '',
+      assigned_to:'',
       endDate: new Date().toISOString().substring(0, 10),
       priority:'',
     });
@@ -60,6 +62,7 @@ const Dashboard = () => {
       project_name: '',
       startDate: '',
       priority:'',
+      assigned_to:'',
       endDate: new Date().toISOString().substring(0, 10),
     })
   };
@@ -279,6 +282,18 @@ const Dashboard = () => {
                       <option value="">Select a project</option>
                       {allProjects.map((project, index) => (
                         <option key={index} value={project}>{project}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+      {user.is_admin && allProjects.length > 0 && (
+                  <div className='form-group'>
+                    <label>Developer:</label>
+                    <select onChange={handleChange} value={request.assigned_to} name="assigned_to" className='assigned_to'>
+                      <option value="">Select a Developer</option>
+                      {allProjects.map((project, index) => (
+                        <option key={index} value={project.name}>{project.name}</option>
                       ))}
                     </select>
                   </div>

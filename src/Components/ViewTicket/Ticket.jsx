@@ -25,7 +25,8 @@ const Ticket = () => {
     support_related_to: ticket.support_related_to,
     facing_issue_on: ticket.facing_issue_on,
     priority:ticket.priority,
-    end_date: ticket.end_date
+    end_date: ticket.end_date,
+    assigned_to: ticket.assigned_to
   });
 
   const token = localStorage.getItem("token")
@@ -196,7 +197,7 @@ const Ticket = () => {
                     {is_admin && ticket?.developers.length > 0 && (
                   <div className='form-group'>
                     <label>Developer:</label>
-                    <select onChange={handleChange} value={ticket?.assigned_to||"Not Assigned"} name="assigned_to" className='assigned_to'>
+                    <select onChange={handleChange} value={formState?.assigned_to} name="assigned_to" className='assigned_to'>
                       <option value="">Select a Developer</option>
                       {ticket?.developers.map((project, index) => (
                         <option key={index} value={project.name}>{project.name}</option>
