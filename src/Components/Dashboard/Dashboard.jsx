@@ -287,7 +287,7 @@ const Dashboard = () => {
                   </div>
                 )}
 
-      {user.is_admin && allProjects.length > 0 && (
+      {  user.is_admin && allProjects.length > 0 && (
                   <div className='form-group'>
                     <label>Developer:</label>
                     <select onChange={handleChange} value={request.assigned_to} name="assigned_to" className='assigned_to'>
@@ -296,8 +296,10 @@ const Dashboard = () => {
                         <option key={index} value={project.name}>{project.name}</option>
                       ))}
                     </select>
+                    {console.log(allProjects,"HERE")}
                   </div>
                 )}
+                {}
               </div>
               <div className='btnsr'>
               <label>&nbsp;</label>
