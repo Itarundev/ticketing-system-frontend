@@ -296,7 +296,6 @@ const Dashboard = () => {
                         <option key={index} value={project.name}>{project.name}</option>
                       ))}
                     </select>
-                    {console.log(allProjects,"HERE")}
                   </div>
                 )}
                 {}
