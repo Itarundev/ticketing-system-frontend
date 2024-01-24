@@ -26,6 +26,7 @@ const Dashboard = () => {
   const token = localStorage.getItem("token")
   const user = JSON.parse(localStorage.getItem("user"))
   const [tickets, setTickets] = useState([]);
+  const [developers,setDevelopers]=useState([]);
   const navigate = useNavigate();
   const [page, setPage] = useState(+0);
   const [rowsPerPage, setRowsPerPage] = useState(+10);
@@ -122,6 +123,7 @@ const Dashboard = () => {
     await axios(config)
       .then((response) => {
           setTickets(response.data.tickets);
+          setDevelopers(response.data.developers);
         if(response.data.count)
         {
           setTotalCount(parseInt(response.data.count, 10));
@@ -355,8 +357,9 @@ const Dashboard = () => {
                           <Tooltip title="View" arrow className='btnall_tbl view_btn'>
                             <IconButton  >
                               <RemoveRedEyeIcon onClick={() => {
-                                const encodedData = encodeURIComponent(JSON.stringify(ticket));
-                                navigate(`/ticket-view?data=${encodedData}`)
+                               const encodedData = encodeURIComponent(JSON.stringify({ ticket, ...developers }));
+                               navigate(`/ticket-view?data=${encodedData}`);
+                               
                               }}/>
                             </IconButton>
                           </Tooltip>
