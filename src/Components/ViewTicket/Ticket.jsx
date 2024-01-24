@@ -16,6 +16,7 @@ const Ticket = () => {
   const ticket = JSON.parse(decodedData);
   const navigate = useNavigate();
 
+  console.log(ticket,"Ticket here");
   const [formState, setFormState] = useState({
     title: ticket.title,
     description: ticket.description,
