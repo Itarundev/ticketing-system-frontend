@@ -41,35 +41,28 @@ const TicketStats = () => {
         <Container>
           <div className="responsive-table">
             {data && (
-              <Grid container spacing={3}>
-                {data.map((project) => (
-                  <Grid
-                    item
-                    key={project.project_name}
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={3}
-                  >
-                    <Card>
-                      <CardContent>
-                        <Typography variant="h6" gutterBottom>
-                          {project.project_name}
-                        </Typography>
-                        <Typography color="textSecondary">
-                          Total Tickets: {project.total_tickets}
-                        </Typography>
-                        <Typography color="textSecondary">
-                          Open Tickets: {project.open_tickets}
-                        </Typography>
-                        <Typography color="textSecondary">
-                          Closed Tickets: {project.closed_tickets}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
+             <Grid container spacing={3}>
+             {data.map((project) => (
+               <Grid key={project.project_name} item xs={12} sm={6} md={4} lg={3}>
+                 <Card elevation={3} sx={{ height: '100%' }}>
+                   <CardContent>
+                     <Typography variant="h6" gutterBottom>
+                       {project.project_name}
+                     </Typography>
+                     <Typography color="textSecondary">
+                       Total Tickets: {project.total_tickets}
+                     </Typography>
+                     <Typography color="textSecondary">
+                       Open Tickets: {project.open_tickets}
+                     </Typography>
+                     <Typography color="textSecondary">
+                       Closed Tickets: {project.closed_tickets}
+                     </Typography>
+                   </CardContent>
+                 </Card>
+               </Grid>
+             ))}
+           </Grid>
             )}
           </div>
         </Container>
