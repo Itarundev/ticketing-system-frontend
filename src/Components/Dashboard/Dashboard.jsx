@@ -18,7 +18,6 @@ import { IconButton } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import { CSVLink } from 'react-csv';
-import { ThemeProvider } from '../Navbar/StorageContext';
 
 
 
@@ -35,37 +34,46 @@ const Dashboard = () => {
   const [order, setOrder] = useState('desc');
   const [allProjects, setAllProjects] = useState([])
   const [csvTickets, setCsvTickets] = useState([])
-  const [request, setRequest] = useState({
-    created_by_name: '',
-    status: '',
-    project_name: '',
-    startDate: '',
-    priority:'',
-    assigned_to:'',
-    endDate: new Date().toISOString().substring(0, 10)
-  })
+  const [allUsers,setAllUsers]=useState([])
+  const [selectedUser, setSelectedUser] = useState("");
 
-  const clearFilters = () => {
-    setRequest({
-      ...request,
-      created_by_name: '',
-      status: '',
-      project_name: '',
-      startDate: '',
-      assigned_to:'',
-      endDate: new Date().toISOString().substring(0, 10),
-      priority:'',
-    });
-    getAllTickets({
-      created_by_name: '',
-      status: '',
-      project_name: '',
-      startDate: '',
-      priority:'',
-      assigned_to:'',
-      endDate: new Date().toISOString().substring(0, 10),
-    })
+  const handleSelectUserChange = (event) => {
+    setSelectedUser(event.target.value);
   };
+  
+  const [request, setRequest] = useState({
+    created_by_name: "",
+    status: "",
+    project_name: "",
+    startDate: "",
+    priority: "",
+    assigned_to: selectedUser,
+    endDate: new Date().toISOString().substring(0, 10),
+  });
+  
+  const clearFilters = () => {
+    setRequest((prevRequest) => ({
+      ...prevRequest,
+      created_by_name: "",
+      status: "",
+      project_name: "",
+      startDate: "",
+      priority: "",
+      assigned_to: selectedUser,
+      endDate: new Date().toISOString().substring(0, 10),
+    }));
+  
+    getAllTickets({
+      created_by_name: "",
+      status: "",
+      project_name: "",
+      startDate: "",
+      priority: "",
+      assigned_to: selectedUser,
+      endDate: new Date().toISOString().substring(0, 10),
+    });
+  };
+  
   
 
   const handleStartDateChange = (e) => {
@@ -178,8 +186,21 @@ const Dashboard = () => {
     getCSVTickets()
     if (user.is_admin) {
       getAllProjects()
+      
     }
+    getAllUsers();
   },[])
+
+  const getAllUsers = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-employees`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then((res) => {
+        setAllUsers(res.data.companies)
+      })
+  }
 
   useEffect(() => {
     getAllTickets(request)
@@ -287,18 +308,17 @@ const Dashboard = () => {
                   </div>
                 )}
 
-      {  user.is_admin && allProjects.length > 0 && (
-                  <div className='form-group'>
-                    <label>Developer:</label>
-                    <select onChange={handleChange} value={request.assigned_to} name="assigned_to" className='assigned_to'>
-                      <option value="">Select a Developer</option>
-                      {allProjects.map((project, index) => (
-                        <option key={index} value={project.name}>{project.name}</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-                {}
+{user.is_admin && allUsers.length > 0 && (
+              <div className='slct'>
+                <label htmlFor="title">Developer</label>
+                <select onChange={(e)=> setRequest({ ...request, assigned_to: e.target.value })} defaultValue="">
+                  <option value="" disabled>Select a User</option>
+                  {allUsers.map((companies, index) => (
+                    <option key={index} value={companies.brand_name}>{companies.brand_name}</option>
+                  ))}
+                </select>
+              </div>
+            )}
               </div>
               <div className='btnsr'>
               <label>&nbsp;</label>

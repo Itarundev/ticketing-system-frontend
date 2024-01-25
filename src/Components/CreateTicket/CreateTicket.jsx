@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const TicketForm = () => {
   const [supportType, setSupportType] = useState('');
-  const [supportRelatedTo, setSupportRelatedTo] = useState('');
+  const [supportRelatedTo, setSupportRelatedTo] = useState(''); 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -21,8 +21,10 @@ const TicketForm = () => {
   const [supportSubType, setSupportSubType] = useState({});
   const [facingIssues, seFacingIssues] = useState([]);
   const [allProjects, setAllProjects] = useState([])
+  const [allUsers, setAllUsers] = useState([])
   const navigate = useNavigate();
   const[selectedProject,setSelectedProject]=useState("")
+  const[selectedUser,setSelectedUser]=useState("")
   const user = JSON.parse(localStorage.getItem('user'));
   const token = localStorage.getItem("token")
 
@@ -46,6 +48,17 @@ const TicketForm = () => {
         setAllProjects(res.data.projects)
       })
   }
+
+  const getAllUsers = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-employees`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then((res) => {
+        setAllUsers(res.data.companies)
+      })
+  }
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/api/facing-issues`)
       .then((res) => {
@@ -58,6 +71,7 @@ const TicketForm = () => {
       if(user.is_admin)
       {
         getAllProjects();
+        getAllUsers();
       }
   }, [])
   const handleSupportTypeChange = (e) => {
@@ -79,8 +93,13 @@ const TicketForm = () => {
   formData.append('facing_issue_on', facingIssueOn);
   formData.append('priority', priority);
   formData.append('end_date', endDate);
+  formData.append('assigned_to', selectedUser);
   const handleChange = (event) => {
     setSelectedProject(event.target.value)
+  };
+
+  const handleSelectUserChange = (event) => {
+    setSelectedUser(event.target.value)
   };
 
   for (let i = 0; i < images.length; i++) {
@@ -213,6 +232,18 @@ const TicketForm = () => {
         </div>
 
         <div className='right_ct'>
+        {user.is_admin && allUsers.length > 0 && (
+              <div className='slct'>
+                <label htmlFor="title">Developer</label>
+                <select onChange={handleSelectUserChange} defaultValue="">
+                  <option value="" disabled>Select a User</option>
+                  {allUsers.map((companies, index) => (
+                    <option key={index} value={companies.brand_name}>{companies.brand_name}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+
          
         <div className='graybx fcngbx'>
               <label>Support Type</label>
@@ -247,6 +278,7 @@ const TicketForm = () => {
                 ))}
               </div></div>
             )}
+
 
 <div>
               <label htmlFor="endDate">End Date</label>
