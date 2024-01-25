@@ -59,16 +59,13 @@ const TicketStats = () => {
                         <Typography variant="h6" gutterBottom fontWeight="bold">
                           {project.project_name}
                         </Typography>
-                        <Typography variant="subtitle2" color="textSecondary">
-                          Ticket Stats
-                        </Typography>
-                        <Typography color="textSecondary">
+                        <Typography variant="button" display="block" gutterBottom>
                           Total Tickets: {project.total_tickets}
                         </Typography>
-                        <Typography color="textSecondary">
+                        <Typography variant="button" display="block" gutterBottom>
                           Open Tickets: {project.open_tickets}
                         </Typography>
-                        <Typography color="textSecondary">
+                        <Typography variant="button" display="block" gutterBottom>
                           Closed Tickets: {project.closed_tickets}
                         </Typography>
                       </CardContent>
