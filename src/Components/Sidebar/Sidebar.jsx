@@ -42,6 +42,12 @@ const Sidebar = () => {
           <CreateIcon />
           <span> Create Ticket</span>
         </div>
+
+
+        <div className={`sidebar_item ${activeRoute === "/stats" ? "active" : ""}`} onClick={() => handleListItemClick("/stats")}>
+          <CreateIcon />
+          <span>Ticket Stats</span>
+        </div>
       </div>
 
     </div>

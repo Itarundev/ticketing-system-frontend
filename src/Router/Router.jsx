@@ -9,6 +9,7 @@ import Ticket from '../Components/ViewTicket/Ticket'
 import Company from '../Components/Company/Company'
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
+import TicketStats from '../Components/Stats/TicketStats'
 
 
 
@@ -34,6 +35,7 @@ export default function Router() {
           <Route exact path="/register-company" element={<Register />} />
           <Route exact path="/ticket-view" element={<Ticket />} />
           <Route exact path="/ticket-create" element={<TicketForm />} />
+          <Route exact path="/stats" element={<TicketStats />} />
           </>
         }  
       </Routes>
