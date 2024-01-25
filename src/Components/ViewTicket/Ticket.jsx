@@ -20,6 +20,7 @@ const Ticket = () => {
   const decodedData = decodeURIComponent(encodedData);
   const ticket = JSON.parse(decodedData);
   const navigate = useNavigate();
+  const [allUsers,setAllUsers]=useState([])
 
   console.log(ticket, "Ticket here");
   const [formState, setFormState] = useState({
@@ -66,6 +67,17 @@ const Ticket = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  const getAllUsers = () => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-employees`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then((res) => {
+        setAllUsers(res.data.companies)
+      })
+  }
 
   useEffect(() => {
     if (token && ticket.id) {
