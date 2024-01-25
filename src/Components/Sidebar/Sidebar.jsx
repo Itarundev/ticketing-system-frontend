@@ -39,16 +39,17 @@ const Sidebar = () => {
           <span > Company  </span>
         </div>}
 
-        <div className={`sidebar_item ${activeRoute === "/ticket-create" ? "active" : ""}`} onClick={() => handleListItemClick("/ticket-create")}>
+       {user.project!=null||user.is_admin&&<div className={`sidebar_item ${activeRoute === "/ticket-create" ? "active" : ""}`} onClick={() => handleListItemClick("/ticket-create")}>
           <CreateIcon />
           <span> Create Ticket</span>
         </div>
+}
 
-
-        <div className={`sidebar_item ${activeRoute === "/stats" ? "active" : ""}`} onClick={() => handleListItemClick("/stats")}>
+{user.is_admin&&   <div className={`sidebar_item ${activeRoute === "/stats" ? "active" : ""}`} onClick={() => handleListItemClick("/stats")}>
           <GraphicEqTwoTone />
           <span>Ticket Stats</span>
         </div>
+}
       </div>
 
     </div>
