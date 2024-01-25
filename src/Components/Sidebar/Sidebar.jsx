@@ -6,7 +6,7 @@ import Logo from "../../Assets/logo_login.svg"
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import { ThemeContext } from '../Navbar/StorageContext';
-import { DetailsSharp } from '@mui/icons-material';
+import { DetailsSharp, GraphicEqTwoTone } from '@mui/icons-material';
 
 
 const Sidebar = () => {
@@ -46,7 +46,7 @@ const Sidebar = () => {
 
 
         <div className={`sidebar_item ${activeRoute === "/stats" ? "active" : ""}`} onClick={() => handleListItemClick("/stats")}>
-          <DetailsSharp />
+          <GraphicEqTwoTone />
           <span>Ticket Stats</span>
         </div>
       </div>
