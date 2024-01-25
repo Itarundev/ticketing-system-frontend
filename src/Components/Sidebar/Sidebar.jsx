@@ -7,6 +7,7 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import { ThemeContext } from '../Navbar/StorageContext';
 import { DetailsSharp, GraphicEqTwoTone } from '@mui/icons-material';
+import PeopleIcon from '@mui/icons-material/People';
 
 
 const Sidebar = () => {
@@ -44,8 +45,13 @@ const Sidebar = () => {
           <span> Create Ticket</span>
         </div>
 }
+{/* team-list */}
 
-{user.is_admin&&   <div className={`sidebar_item ${activeRoute === "/stats" ? "active" : ""}`} onClick={() => handleListItemClick("/stats")}>
+    {user.is_admin&& <div className={`sidebar_item ${activeRoute === "/team-list" ? "active" : ""}`} onClick={() => handleListItemClick("/team-list")}>
+          <PeopleIcon />
+          <span > Team  </span>
+        </div>}
+    {user.is_admin&&   <div className={`sidebar_item ${activeRoute === "/stats" ? "active" : ""}`} onClick={() => handleListItemClick("/stats")}>
           <GraphicEqTwoTone />
           <span>Ticket Stats</span>
         </div>

@@ -10,6 +10,9 @@ import Company from '../Components/Company/Company'
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import TicketStats from '../Components/Stats/TicketStats'
+import Team from '../Components/Team/Team'
+import AddUser from '../Components/User/AddUser'
+
 
 
 
@@ -32,7 +35,9 @@ export default function Router() {
           user&&token&&<>
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/company-list" element={<Company />} />
+          <Route exact path="/team-list" element={<Team />} />
           <Route exact path="/register-company" element={<Register />} />
+          <Route exact path="/register-user" element={<AddUser />} />
           <Route exact path="/ticket-view" element={<Ticket />} />
           <Route exact path="/ticket-create" element={<TicketForm />} />
           <Route exact path="/stats" element={<TicketStats />} />
