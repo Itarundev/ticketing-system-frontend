@@ -29,6 +29,13 @@
     justify-content: space-between;
 }
 
+.flex-wrapper {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
 .cretedat_update p,
 .updatebtnwrapper p {
     font-size: 0.8rem;
