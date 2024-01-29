@@ -186,9 +186,10 @@ const Dashboard = () => {
     getCSVTickets()
     if (user.is_admin) {
       getAllProjects()
+      getAllUsers();
       
     }
-    getAllUsers();
+   
   },[])
 
   const getAllUsers = () => {

@@ -20,7 +20,7 @@ const Ticket = () => {
   const decodedData = decodeURIComponent(encodedData);
   const ticket = JSON.parse(decodedData);
   const navigate = useNavigate();
-  const [allUsers,setAllUsers]=useState([])
+  const [allUsers, setAllUsers] = useState([]);
 
   console.log(ticket, "Ticket here");
   const [formState, setFormState] = useState({
@@ -59,7 +59,7 @@ const Ticket = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((response) => {
         setAllComments(response.data.ticketHistory);
@@ -69,20 +69,22 @@ const Ticket = () => {
   };
 
   const getAllUsers = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/get-all-employees`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then((res) => {
-        setAllUsers(res.data.companies)
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/api/get-all-employees`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-  }
+      .then((res) => {
+        setAllUsers(res.data.companies);
+      });
+  };
 
   useEffect(() => {
     if (token && ticket.id) {
       getAllComments();
       getAllDeadlineHistory();
+      getAllUsers();
     }
   }, [token]);
 
@@ -161,7 +163,7 @@ const Ticket = () => {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            },
+            }
           )
           .then((response) => {
             if (response.statusText === "OK") {
@@ -193,7 +195,7 @@ const Ticket = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       )
       .then((response) => {
         if (response.statusText === "OK") {
@@ -301,7 +303,7 @@ const Ticket = () => {
                         disabled
                       />
                     </div>
-                    {is_admin && ticket?.developers.length > 0 && (
+                    {is_admin && allUsers.length > 0 && (
                       <div className="form-group">
                         <label>Developer:</label>
                         <select
@@ -311,9 +313,9 @@ const Ticket = () => {
                           className="assigned_to"
                         >
                           <option value="">Select a Developer</option>
-                          {ticket?.developers.map((project, index) => (
-                            <option key={index} value={project.name}>
-                              {project.name}
+                          {allUsers?.map((project, index) => (
+                            <option key={index} value={project.brand_name}>
+                              {project.brand_name}
                             </option>
                           ))}
                         </select>
