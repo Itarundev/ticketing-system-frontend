@@ -80,6 +80,7 @@ export default function AddUser() {
           <div className="register-container">
            
             <form onSubmit={handleSubmit} className='frmdf'>
+              <div className='forbox'>
               <div className="form-group">
                 <label htmlFor="brandName">Name</label>
                 <input type="text" className="" id="brandName" placeholder="Enter name" value={brand_name} onChange={(e) => setBrandName(e.target.value)} required />
@@ -95,9 +96,9 @@ export default function AddUser() {
               <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input type="password" className="" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-              </div>
+              </div></div>
               <div className="bnsx">            
-              <button type="submit" className="btn btn-primary submitBtn">Submit</button>
+              <button type="submit" className="btn btn-primary submitBtn mr0">Submit</button>
               </div>
             </form>
             <ToastContainer />

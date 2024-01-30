@@ -245,7 +245,7 @@ const TicketForm = () => {
             )}
 
          
-        <div className='graybx fcngbx'>
+        <div className='graybx fcngbx mtb10'>
               <label>Support Type</label>
               <div className="facing_radio">
                 {support_types.map(type => (
@@ -280,7 +280,7 @@ const TicketForm = () => {
             )}
 
 
-<div>
+<div className='mt10'>
               <label htmlFor="endDate">End Date</label>
               <input id="endDate" name="endDate" type='date' value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </div>

@@ -296,8 +296,7 @@ const Dashboard = () => {
                 <label htmlFor="endDate">End Date</label>
                 <input type="date" id="endDate" className='datebx_in' value={request.endDate} onChange={handleEndDateChange} />
               </div>
-              <div >
-                {user.is_admin && allProjects.length > 0 && (
+              {user.is_admin && allProjects.length > 0 && (
                   <div className='project_bx'>
                     <label>Project:</label>
                     <select onChange={handleChange} value={request.project_name} className='status_select'>
@@ -320,7 +319,7 @@ const Dashboard = () => {
                 </select>
               </div>
             )}
-              </div>
+             
               <div className='btnsr'>
               <label>&nbsp;</label>
                 <button onClick={()=>{
@@ -331,13 +330,7 @@ const Dashboard = () => {
                   Search
                 </button>
               </div>
-              <div className='csvdiv' >
-              <label>&nbsp;</label>
-                <CSVLink className='csvbtn' data={csvTickets} filename={'my-table-data.csv'}>
-                  Export to CSV
-                </CSVLink>
-
-              </div>
+            
               <div className='clearbx'>
               <label>&nbsp;</label>
 <div onClick={clearFilters}>
@@ -346,7 +339,14 @@ const Dashboard = () => {
               </div>
             </div>
 
-           <div className='responsive-table'>
+            <div className='csvdiv' >
+              
+                <CSVLink className='csvbtn' data={csvTickets} filename={'my-table-data.csv'}>
+                  Export to CSV
+                </CSVLink>
+
+              </div>
+           <div className='responsive-table mt-0'>
             <Table className="table tblall" aria-label="tickets table">
               <TableHead>
 

@@ -135,6 +135,11 @@ const TicketStats = () => {
         <Navbar />
 
         <Container>
+        <div className='title_txt'>
+        <h1>Ticket Stats</h1>
+          </div>
+          <div className='frmedit white_card'>
+            <div className="select_tc">
           <Select
             value={selectedProject}
             onChange={(e) => setSelectedProject(e.target.value)}
@@ -144,9 +149,9 @@ const TicketStats = () => {
                 {project.project_name}
               </MenuItem>
             ))}
-          </Select>
+          </Select></div>
 
-          <div className="responsive-table">
+          <div className="tic_box">
             {data && (
               <Grid container spacing={3}>
                 {data.map((project) => (
@@ -163,26 +168,30 @@ const TicketStats = () => {
                       elevation={3}
                       sx={{ height: "100%", border: "1px solid #e0e0e0" }}
                     >
-                      <CardContent>
+                      <CardContent >
                         <Typography variant="h6" gutterBottom fontWeight="bold">
                           {project.project_name}
                         </Typography>
+                        <div className="boxcrd">
                         <Typography variant="button" display="block" gutterBottom>
-                          Total Tickets: {project.total_tickets}
+                          <h2>{project.total_tickets}</h2>
+                          Total Tickets 
                         </Typography>
                         <Typography variant="button" display="block" gutterBottom>
-                          Open Tickets: {project.open_tickets}
+                          <h2>{project.open_tickets}</h2>
+                          Open Tickets
                         </Typography>
                         <Typography variant="button" display="block" gutterBottom>
-                          Closed Tickets: {project.closed_tickets}
-                        </Typography>
+                          <h2>{project.closed_tickets}</h2>
+                          Closed Tickets
+                        </Typography></div>
                       </CardContent>
                     </Card>
                   </Grid>
                 ))}
               </Grid>
             )}
-          </div>
+          </div></div>
         </Container>
 
         <ToastContainer />

@@ -95,6 +95,7 @@ export default function Register() {
                 <label htmlFor="project">Project</label>
                 <input type="text" className="" id="project" placeholder="Enter project name" value={project} onChange={(e) => setProject(e.target.value)} required />
               </div>
+              <div className='forbox'>
               <div className="form-group">
                 <label htmlFor="street">Street</label>
                 <input type="text" className="" id="street" placeholder="Enter street" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
@@ -110,7 +111,7 @@ export default function Register() {
               <div className="form-group">
                 <label htmlFor="zip">Zip Code</label>
                 <input type="text" className="form-control" id="zip" placeholder="Enter zip code" value={address.zip} onChange={(e) => setAddress({ ...address, zip: e.target.value })} />
-              </div>
+              </div></div>
               <div className="form-group">
                 <label htmlFor="mobileNo">Mobile number</label>
                 <input type="tel" className="" id="mobileNo" placeholder="Enter mobile number" value={mobileNo} onChange={(e) => setMobileNo(e.target.value)} required />
