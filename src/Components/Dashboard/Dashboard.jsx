@@ -259,7 +259,7 @@ const Dashboard = () => {
         <Navbar handleSearch={handleSearch} />
         <Container>
           <div>
-            <div className='status_btn'>
+            <div className='status_btn bbn'>
               <div className='search_All'>
               <label>Search</label>
                 {user.is_admin &&
@@ -320,8 +320,21 @@ const Dashboard = () => {
               </div>
             )}
              
-              <div className='btnsr'>
-              <label>&nbsp;</label>
+             
+            </div>
+            <div className='buttonflex'>    
+              <div className='csvdiv' >
+              
+              <CSVLink className='csvbtn' data={csvTickets} filename={'my-table-data.csv'}>
+                Export to CSV
+              </CSVLink>
+
+            </div>
+
+            <div className='flexbtn'>
+            <div onClick={clearFilters}>
+  Clear Filters
+</div>
                 <button onClick={()=>{
                   getAllTickets(request)
                   getCSVTickets()
@@ -329,23 +342,12 @@ const Dashboard = () => {
                 }>
                   Search
                 </button>
-              </div>
-            
-              <div className='clearbx'>
-              <label>&nbsp;</label>
-<div onClick={clearFilters}>
-  Clear Filters
-</div>
+
+               
               </div>
             </div>
 
-            <div className='csvdiv' >
-              
-                <CSVLink className='csvbtn' data={csvTickets} filename={'my-table-data.csv'}>
-                  Export to CSV
-                </CSVLink>
-
-              </div>
+           
            <div className='responsive-table mt-0'>
             <Table className="table tblall" aria-label="tickets table">
               <TableHead>
