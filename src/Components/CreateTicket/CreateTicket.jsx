@@ -175,7 +175,7 @@ const TicketForm = () => {
         {user.is_admin && allProjects.length > 0 && (
               <div className='slct'>
                 <label htmlFor="title">Project</label>
-                <select onChange={handleChange} defaultValue="">
+                <select onChange={handleChange} defaultValue="" required>
                   <option value="" disabled>Select a project</option>
                   {allProjects.map((project, index) => (
                     <option key={index} value={project}>{project}</option>
@@ -187,18 +187,18 @@ const TicketForm = () => {
             
 <div>
               <label htmlFor="title">Title</label>
-              <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+              <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} required/>
             </div>
 
             <div>
               <label htmlFor="description">Description</label>
-              <textarea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <textarea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
             </div>
 
 
             <div className="form-group">
                       <label>Priority:</label>
-                      <select className="" name="priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
+                      <select className="" name="priority" value={priority} onChange={(e) => setPriority(e.target.value)} required>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
@@ -216,6 +216,7 @@ const TicketForm = () => {
                       value={type}
                       checked={facingIssueOn === type}
                       onChange={handleIssueTypeChange}
+                      required
                     />
                    <span> {type}</span>
                   </label>
@@ -256,6 +257,7 @@ const TicketForm = () => {
                       value={type}
                       checked={supportType === type}
                       onChange={handleSupportTypeChange}
+                      required
                     />
                    <span> {type}</span>
                   </label>
@@ -272,7 +274,7 @@ const TicketForm = () => {
                 <div className='facing_radio1'>
                 {supportRelatedToRadioOptions.map((option, index) => (                 
                   <div key={index} className='flex_ord'>
-                    <input type="radio" id={`supportRelatedTo-${index}`} name="supportRelatedTo" value={option} checked={supportRelatedTo === option} onChange={(e) => setSupportRelatedTo(e.target.value)} />
+                    <input type="radio" id={`supportRelatedTo-${index}`} name="supportRelatedTo" value={option} checked={supportRelatedTo === option} onChange={(e) => setSupportRelatedTo(e.target.value)} required/>
                     <label htmlFor={`supportRelatedTo-${index}`}>{option}</label>
                   </div>
                 ))}
